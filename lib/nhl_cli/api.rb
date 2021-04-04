@@ -1,7 +1,7 @@
 class API
     def self.get_data #player
-        response = RestClient.get('https://statsapi.web.nhl.com/api/v1/configurations')
-        # binding.pry
+        response = RestClient.get('https://statsapi.web.nhl.com/api/v1/teams')
+        binding.pry
 
     end
 
