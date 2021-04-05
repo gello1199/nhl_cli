@@ -18,12 +18,20 @@ class CLI
     def menu
         selection = user_input
         if selection == "y"
-            #displays teams
+            print_teams
         elsif selection == "exit"
             #exits the CLI
         else
             puts "I don't understand. Please try again. Select 'y' for yes and 'exit' to exit."
         end
     end
+
+    def print_teams
+        team_list = ["team1", "team2", "team3"]
+        team_list.each.with_index(1) do |team, index|
+            puts "#{index}. #{team}"
+        end
+    end
+
 
 end
