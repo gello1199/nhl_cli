@@ -1,39 +1,35 @@
-#player will belong to a specific team
-#player will have specific stats
+# player will belong to a specific team
+# player will have specific stats
 
-# class Player
-#     attr_accessor :name, :team, :jersey_number, :position, :goals, :assists, :points
 
-#     @@all = []
+class Player
+    attr_accessor :name, :roster  
 
-    # def initialize(name, team, stats)
-    #     @name = name
-    #     @team = team
-    #     @jersey_number = jersey_number
-    #     @position = position
-    #     @goals = goals
+    @@all = []
 
-    #gets too long. Need to use metaprogramming
-
-    # end
-    
-    #using metaprogramming
+    def initialize(name, roster)
+        @name = name
+        @roster = roster
+        save
+    end
     
     # def initialize(attributes)
     #     attributes.each {|key, value| self.send(("#{key}="), value)}
     #     save
     # end
 
-#     def save
-#         @@all << self
-#     end
+    def save
+        @@all << self
+    end
 
-#     def self.all
-#         @@all
-#     end
+    def self.all
+        @@all
+    end
 
-#     def self.destroy_all
-#         self.all.clear 
-#     end
-
-# end
+    def self.find_by_selection(team_names)
+        self.all.detect do |teams| 
+            teams.name == team_names
+        end
+    end
+    
+end
