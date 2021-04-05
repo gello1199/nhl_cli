@@ -2,6 +2,7 @@ class CLI
 
     def start
         puts "Welcome to the NHL player reference! What is your name?"
+        API.get_data
         input = user_input
         greeting(input)
     end
@@ -29,9 +30,8 @@ class CLI
     end
 
     def print_teams
-        team_list = ["team1", "team2", "team3"]
-        team_list.each.with_index(1) do |team, index|
-            puts "#{index}. #{team}"
+        Player.all.sort {|a, b| a.name <=> b.name}.each.with_index(1) do |team, index|
+            puts "#{index}. #{team.name}"
         end
         team_selection
     end
