@@ -47,13 +47,16 @@ class CLI
     def team_selection
         puts "Please enter the team name to view the current NHL roster."
         selection = user_input
-        roster_details(selection)
+        roster = Player.find_by_selection(selection)
+        roster_details(roster)
     end
 
-    def roster_details(roster)
-        puts "#{roster}"
+    def roster_details(players)
+        players.roster.each do |player|
+            puts "# #{player["jerseyNumber"]}. #{player["person"]["fullName"]} - Pos: #{player["position"]["name"]}"
+            # binding.pry
+        end
+        puts "#{@roster}"
         menu
     end
-
-
 end

@@ -12,11 +12,6 @@ class Player
         @roster = roster
         save
     end
-    
-    # def initialize(attributes)
-    #     attributes.each {|key, value| self.send(("#{key}="), value)}
-    #     save
-    # end
 
     def save
         @@all << self
