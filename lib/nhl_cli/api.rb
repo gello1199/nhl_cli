@@ -7,6 +7,6 @@ class API
             Player.new(teams["name"], teams["roster"]["roster"])
         # binding.pry
         end
-            binding.pry
+            # binding.pry
     end
 end
