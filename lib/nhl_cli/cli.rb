@@ -24,6 +24,7 @@ class CLI
             goodbye
         else
             invalid
+            menu
         end
     end
 
@@ -32,6 +33,7 @@ class CLI
         team_list.each.with_index(1) do |team, index|
             puts "#{index}. #{team}"
         end
+        team_selection
     end
 
     def goodbye
@@ -46,11 +48,11 @@ class CLI
         puts "Please enter the team name to view the current NHL roster."
         selection = user_input
         roster_details(selection)
-
     end
 
     def roster_details(roster)
         puts "#{roster}"
+        menu
     end
 
 
