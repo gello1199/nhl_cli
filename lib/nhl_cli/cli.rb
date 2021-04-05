@@ -42,5 +42,16 @@ class CLI
         puts "I don't understand. Please try again. Select 'y' for yes and 'exit' to exit."
     end
 
+    def team_selection
+        puts "Please enter the team name to view the current NHL roster."
+        selection = user_input
+        roster_details(selection)
+
+    end
+
+    def roster_details(roster)
+        puts "#{roster}"
+    end
+
 
 end
