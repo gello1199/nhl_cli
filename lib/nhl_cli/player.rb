@@ -26,10 +26,10 @@ class Player
         @@all
     end
 
-    # def self.find_by_selection(team_names)
-    #     self.all.detect do |teams| 
-    #         teams.name == team_names
-    #     end
-    # end
+    def self.find_by_selection(team_name)
+        self.all.detect do |team| 
+            team.name == team_name
+        end
+    end
     
 end
