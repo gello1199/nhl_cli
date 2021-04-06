@@ -68,6 +68,7 @@ class CLI
     end
 
     def roster_details(players)
+        puts "#{players.name}"
         sorted_roster = players.roster.sort_by {|player| player["jerseyNumber"].to_i}
         sorted_roster.each do |player|
             puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|"
