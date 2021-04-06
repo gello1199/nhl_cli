@@ -12,7 +12,8 @@ class CLI
     end
 
     def greeting(name)
-        puts "Hello, #{name}! Would you like to see the roster of your favorite NHL team? Please select 'y' for yes or 'exit' to exit."
+        # while name != "exit"
+        puts "Hello, #{name}! Would you like to see the roster of your favorite NHL team? Please type 'y' for yes or 'exit' to exit."
         menu
     end
 
@@ -20,12 +21,10 @@ class CLI
         selection = user_input
         if selection == "y"
             print_teams
-            menu
         elsif selection == "exit"
             goodbye
         else
             invalid
-            menu
         end
     end
 
@@ -41,22 +40,24 @@ class CLI
     end
 
     def invalid
-        puts "I don't understand. Please try again. Select 'y' for yes and 'exit' to exit."
+        puts "I don't understand. Please try again. Type 'y' for yes and 'exit' to exit."
+        menu
     end
 
     def team_selection
         puts "Please enter the team name to view the current NHL roster."
-        selection = user_input
+        selection = user_input.to_i
         roster = Player.find_by_selection(selection)
         roster_details(roster)
     end
 
     def roster_details(players)
-        players.roster.each do |player|
+        sorted_roster = players.roster.sort_by {|player| player["jerseyNumber"].to_i}
+        sorted_roster.each do |player|
             puts "# #{player["jerseyNumber"]}. #{player["person"]["fullName"]} - Pos: #{player["position"]["name"]}"
             # binding.pry
         end
-        puts "#{@roster}"
+        puts "Would you like to see another roster? Please enter 'y' for yes and 'exit' to exit."
         menu
     end
 end
