@@ -45,10 +45,17 @@ class CLI
     end
 
     def team_selection
-        puts "Please enter the team name to view the current NHL roster."
-        selection = user_input.to_i
-        roster = Player.find_by_selection(selection)
+        puts "Please enter the number of the team that you want to view."
+        selection = user_input
+        if selection == "exit"
+            goodbye
+        elsif selection.to_i.between?(1, Player.all.length)
+            roster = Player.find_by_selection(selection)
         roster_details(roster)
+        else
+            invalid
+        end
+        
     end
 
     def roster_details(players)

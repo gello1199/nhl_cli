@@ -22,10 +22,8 @@ class Player
     end
 
     def self.find_by_selection(num)
-        if num > 0 && num <= self.all.length
             team_num = self.all.sort {|a, b| a.name <=> b.name}
-            input = team_num[num-1]
-        end
+            input = team_num[num.to_i - 1]
     end
     
 end
