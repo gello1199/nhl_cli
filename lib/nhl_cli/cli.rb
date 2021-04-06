@@ -68,11 +68,11 @@ class CLI
     end
 
     def roster_details(players)
-        puts "#{players.name}"
+        puts ColorizedString["#{players.name}"].colorize(:green)
         sorted_roster = players.roster.sort_by {|player| player["jerseyNumber"].to_i}
         sorted_roster.each do |player|
             puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|"
-            puts "# #{player["jerseyNumber"]}. #{player["person"]["fullName"]} - Pos: #{player["position"]["name"]}"
+            puts ColorizedString["# #{player["jerseyNumber"]}. #{player["person"]["fullName"]} - #{player["position"]["name"]}"].colorize(:light_blue)
             # binding.pry
         end
         puts "Would you like to see another roster? Please enter 'y' for yes and 'exit' to exit."
