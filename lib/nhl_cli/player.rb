@@ -1,7 +1,3 @@
-# player will belong to a specific team
-# player will have specific stats
-
-
 class Player
     attr_accessor :name, :roster  
 
