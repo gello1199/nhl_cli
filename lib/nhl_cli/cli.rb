@@ -61,6 +61,7 @@ class CLI
     def roster_details(players)
         sorted_roster = players.roster.sort_by {|player| player["jerseyNumber"].to_i}
         sorted_roster.each do |player|
+            puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|"
             puts "# #{player["jerseyNumber"]}. #{player["person"]["fullName"]} - Pos: #{player["position"]["name"]}"
             # binding.pry
         end
