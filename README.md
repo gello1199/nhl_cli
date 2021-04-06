@@ -9,13 +9,7 @@ TODO: Delete this and the text above, and describe your gem -->
 
 ## Installation
 
-run bundle install
-
-run ruby bin/run
-
-
-
-<!-- Add this line to your application's Gemfile:
+Add this line to your application's Gemfile:
 
 ```ruby
 gem 'nhl_cli'
@@ -27,7 +21,10 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install nhl_cli -->
+    $ gem install nhl_cli
+
+    To run the program:
+    ruby bin/run
 
 ## Usage
 
