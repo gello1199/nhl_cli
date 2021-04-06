@@ -12,7 +12,7 @@ class CLI
     end
 
     def greeting(name)
-        puts "Hello, #{name}! Would you like to see the roster of your favorite NHL team? Please type 'y' for yes or 'exit' to exit."
+        puts "Hello, #{name.upcase}! Would you like to see the roster of your favorite NHL team? Please type 'y' for yes or 'exit' to exit."
         menu
     end
 

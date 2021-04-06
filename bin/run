@@ -2,6 +2,7 @@
 
 require_relative '../lib/environment.rb'
 require 'colorized_string'
+
 # API.get_data
 
 CLI.new.start
