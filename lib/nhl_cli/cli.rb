@@ -28,7 +28,7 @@ class CLI
     end
 
     def print_teams
-        puts "
+        puts ColorizedString["
       
          _  __   __ __   __         ___   ____    ____ ______   ____   ___        _____   __    ____
         / |/ /  / // /  / /        / _ | / __ |  / __//_  __/  / __/  / _ |      / ___/  / /   /  _/
@@ -36,10 +36,10 @@ class CLI
       /_/|_/  /_//_/  /____/     /_/|_| |____/ /___/  /_/    /___/  /_/|_|      |___/ /_____/ /___/  
                                                                                                                                                              
       
-        "
+        "].colorize(:green)
         Player.all.sort {|a, b| a.name <=> b.name}.each.with_index(1) do |team, index|
-            puts "~~~~~~~~~~~~~~~~~~~~~~~~~|"
-            puts "#{index}. #{team.name}"
+            puts ColorizedString["~~~~~~~~~~~~~~~~~~~~~~~~~|"].colorize(:white)
+            puts ColorizedString["#{index}. #{team.name}"].colorize(:light_blue)
         end
         team_selection
     end
