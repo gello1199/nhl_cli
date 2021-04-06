@@ -12,7 +12,6 @@ class CLI
     end
 
     def greeting(name)
-        # while name != "exit"
         puts "Hello, #{name}! Would you like to see the roster of your favorite NHL team? Please type 'y' for yes or 'exit' to exit."
         menu
     end
@@ -30,6 +29,7 @@ class CLI
 
     def print_teams
         Player.all.sort {|a, b| a.name <=> b.name}.each.with_index(1) do |team, index|
+            puts "~~~~~~~~~~~~~~~~~~~~~~~~~|"
             puts "#{index}. #{team.name}"
         end
         team_selection
