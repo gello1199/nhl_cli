@@ -2,11 +2,6 @@
 
 Welcome to the NHL Roster CLI! This CLI will give you access to all 31 NHL teams and their current rosters. Once prompted, you will be able to see a list of all 31 teams in alphebetical order. From there, you can input the corresponding number to the team whose roster you'd like to view. After entering that number, you will be able to view the current roster with the players numbers, names and positions. Finally, you can return back to the teams page and view another roster of your choice. 
 
-
-<!-- In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/nhl_cli`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem -->
-
 ## Installation
 
 Add this line to your application's Gemfile:
