@@ -18,9 +18,9 @@ class CLI
 
     def menu
         selection = user_input
-        if selection == "y"
+        if selection.downcase == "y"
             print_teams
-        elsif selection == "exit"
+        elsif selection.downcase == "exit"
             goodbye
         else
             invalid
@@ -37,7 +37,7 @@ class CLI
                                                                                                                                                              
       
         "].colorize(:green)
-        Player.all.sort {|a, b| a.name <=> b.name}.each.with_index(1) do |team, index|
+        Team.all.sort {|a, b| a.name <=> b.name}.each.with_index(1) do |team, index|
             puts ColorizedString["~~~~~~~~~~~~~~~~~~~~~~~~~|"].colorize(:white)
             puts ColorizedString["#{index}. #{team.name}"].colorize(:light_blue)
         end
@@ -56,10 +56,10 @@ class CLI
     def team_selection
         puts "Please enter the number of the team that you want to view."
         selection = user_input
-        if selection == "exit"
+        if selection.downcase == "exit"
             goodbye
-        elsif selection.to_i.between?(1, Player.all.length)
-            roster = Player.find_by_selection(selection)
+        elsif selection.to_i.between?(1, Team.all.length)
+            roster = Team.find_by_selection(selection)
         roster_details(roster)
         else
             invalid
@@ -69,7 +69,7 @@ class CLI
 
     def roster_details(players)
         puts ColorizedString["#{players.name}"].colorize(:green)
-        sorted_roster = players.roster.sort_by {|player| player["jerseyNumber"].to_i}
+        sorted_roster = players.roster.sort_by {|player| player["jerseyNumber"].to_i} #can't sort string number bc string = 0
         sorted_roster.each do |player|
             puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|"
             puts ColorizedString["# #{player["jerseyNumber"]}. #{player["person"]["fullName"]} - #{player["position"]["name"]}"].colorize(:light_blue)

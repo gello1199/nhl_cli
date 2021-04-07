@@ -4,7 +4,7 @@ class API
         team = JSON.parse(response)["teams"]
         team.each do |teams|
                         # binding.pry
-            Player.new(teams["name"], teams["roster"]["roster"])
+            Team.new(teams["name"], teams["roster"]["roster"])
         # binding.pry
         end
             # binding.pry

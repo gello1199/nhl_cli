@@ -1,4 +1,4 @@
-class Player
+class Team
     attr_accessor :name, :roster  
 
     @@all = []
