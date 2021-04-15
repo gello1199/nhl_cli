@@ -71,6 +71,7 @@ class CLI
         puts ColorizedString["#{players.name}"].colorize(:green)
         sorted_roster = players.roster.sort_by {|player| player["jerseyNumber"].to_i} #can't sort string number bc string = 0
         sorted_roster.each do |player|
+            # binding.pry
             puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|"
             puts ColorizedString["# #{player["jerseyNumber"]}. #{player["person"]["fullName"]} - #{player["position"]["name"]}"].colorize(:light_blue)
             # binding.pry

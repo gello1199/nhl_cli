@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require_relative "nhl_cli/version"
-
 require "bundler"
 Bundler.require 
 
