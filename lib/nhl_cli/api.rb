@@ -12,13 +12,12 @@ class API
 
     def self.get_data_stats(id)
         stat_response = RestClient.get("http://statsapi.web.nhl.com/api/v1/people/#{id}/stats?stats=statsSingleSeason&season=20202021")
-        stats = JSON.parse(stat_response)
-        binding.pry
-
-        # team.each do |teams|
-        #     Team.new(teams["name"], teams["roster"]["roster"])
+        stats = JSON.parse(stat_response)["stats"]
         # binding.pry
-        # end
+        stats.each do |player_stats|
+        Stats.new(player_stats["goals"], player_stats["assists"], player_stats["points"])
+                # binding.pry
+        end
             # binding.pry
     end
 

@@ -79,4 +79,14 @@ class CLI
         puts "Would you like to see another roster? Please enter 'y' for yes and 'exit' to exit."
         menu
     end
+
+    def player_selection
+        puts "To view individual player statistics, please enter the name of the player of your choice:"
+        selection = user_input
+        
+    end
+
+    def player_details
+
+    end
 end
