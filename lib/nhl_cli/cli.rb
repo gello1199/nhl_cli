@@ -88,6 +88,8 @@ class CLI
             player["jerseyNumber"] == selection
         end
             player_selection(player_stat, players)
+        elsif selection.downcase == "y"
+            print_teams
         else
             puts "I don't understand."
             sleep(2)
