@@ -1,13 +1,14 @@
 class Stats
 
-    attr_accessor :goals, :assists, :points
+    attr_accessor :goals, :assists, :points, :wins, :losses, :ot, :shutouts, :goalAgainstAverage, :savePercentage
 
     @@all = []
 
-    def initialize(goals, assists, points)
-        @goals = goals
-        @assists = assists 
-        @points = points
+    def initialize(stats_hash)
+       stats_hash.each do |key, value|
+        self.send("#{key}=", value) if self.respond_to?("#{key}=")
+       end
+        # binding.pry
         save
     end
 

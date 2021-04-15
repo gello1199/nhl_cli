@@ -76,17 +76,42 @@ class CLI
             puts ColorizedString["# #{player["jerseyNumber"]}. #{player["person"]["fullName"]} - #{player["position"]["name"]}"].colorize(:light_blue)
             # binding.pry
         end
-        puts "Would you like to see another roster? Please enter 'y' for yes and 'exit' to exit."
+        puts "To view individual player statistics, please enter the number of the player of your choice:"
+        # puts "Would you like to see another roster? Please enter 'y' for yes and 'exit' to exit."
+        selection = user_input
+        player_stat = sorted_roster.detect do |player|
+                   player["jerseyNumber"] == selection
+                #    binding.pry
+            end 
+            player_selection(player_stat)
         menu
     end
-
-    def player_selection
-        puts "To view individual player statistics, please enter the name of the player of your choice:"
-        selection = user_input
+    
+    def player_selection(player_stat)
+        player_id = player_stat["person"]["id"]
+        API.get_data_stats(player_id)
+        player_details
         
     end
 
     def player_details
-
+        player_stats = Stats.all.each do |stats|
+            # binding.pry
+        if stats.wins
+            puts "Wins: #{stats.wins}"
+            puts "Losses: #{stats.losses}"
+            puts "OT: #{stats.ot}"
+            puts "Shutouts: #{stats.shutouts}"
+            puts "GAA: #{stats.goalAgainstAverage}"
+            puts "SV%: #{stats.savePercentage}"
+        else
+            # binding.pry
+            puts "Goals: #{stats.goals}"
+            puts "Assists: #{stats.assists}"
+            puts "Total Points: #{stats.points}"
+            # binding.pry
+        end
+    end
+    Stats.all.clear
     end
 end

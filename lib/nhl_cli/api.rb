@@ -14,10 +14,9 @@ class API
         stat_response = RestClient.get("http://statsapi.web.nhl.com/api/v1/people/#{id}/stats?stats=statsSingleSeason&season=20202021")
         stats = JSON.parse(stat_response)["stats"]
         # binding.pry
-        stats.each do |player_stats|
-        Stats.new(player_stats["goals"], player_stats["assists"], player_stats["points"])
+        Stats.new(stats[0]["splits"][0]["stat"])
                 # binding.pry
-        end
+        # end
             # binding.pry
     end
 
