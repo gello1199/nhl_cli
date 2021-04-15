@@ -5,6 +5,7 @@ class Stats
     @@all = []
 
     def initialize(stats_hash)
+        # binding.pry
        stats_hash.each do |key, value|
         self.send("#{key}=", value) if self.respond_to?("#{key}=")
        end

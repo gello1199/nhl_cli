@@ -22,6 +22,8 @@ class CLI
             print_teams
         elsif selection.downcase == "exit"
             goodbye
+        # elsif selection.downcase == "back"
+        #     roster_details(players)
         else
             invalid
         end
@@ -79,25 +81,32 @@ class CLI
         puts "To view individual player statistics, please enter the number of the player of your choice:"
         puts "Would you like to see another roster? Please enter 'y' for yes and 'exit' to exit."
         selection = user_input
+        if selection.downcase == "exit"
+                goodbye
+        elsif sorted_roster.detect {|player| player["jerseyNumber"] == selection}
         player_stat = sorted_roster.detect do |player|
-                   player["jerseyNumber"] == selection
+            player["jerseyNumber"] == selection
+        end
+            player_selection(player_stat, players)
+        else
+            puts "I don't understand."
+            sleep(2)
+            roster_details(players)
                 #    binding.pry
             end 
-            player_selection(player_stat)
             # binding.pry
-        menu
     end
     
-    def player_selection(player_stat)
+    def player_selection(player_stat, players)
         player_id = player_stat["person"]["id"]
         puts ColorizedString["#{player_stat["person"]["fullName"]}"].colorize(:green)
         API.get_data_stats(player_id)
         # binding.pry
-        player_details
+        player_details(players)
         
     end
 
-    def player_details
+    def player_details(players)
         player_stats = Stats.all.each do |stats|
         if stats.wins
             puts "~~~~~~~~~~~~~~~~~|"
@@ -105,7 +114,7 @@ class CLI
             puts "~~~~~~~~~~~~~~~~~|"
             puts ColorizedString["Losses: #{stats.losses}"].colorize(:light_blue)
             puts "~~~~~~~~~~~~~~~~~|"
-            puts ColorizedString["OT: #{stats.ot}"].colorize(:light_blue)
+            puts ColorizedString["OTL: #{stats.ot}"].colorize(:light_blue)
             puts "~~~~~~~~~~~~~~~~~|"
             puts ColorizedString["Shutouts: #{stats.shutouts}"].colorize(:light_blue)
             puts "~~~~~~~~~~~~~~~~~|"
@@ -122,7 +131,22 @@ class CLI
             puts ColorizedString["Total Points: #{stats.points}"].colorize(:light_blue)
             # binding.pry
         end
-    end
+        end
     Stats.all.clear
+            puts "Would you like to see another roster?"
+            puts "Please type 'y' to return to the team list, 'back' to return to current roster or 'exit' to exit."
+            selection = user_input
+            if selection == 'y'
+                print_teams
+            elsif selection == 'back'
+                roster_details(players)
+            elsif selection == 'exit'
+                goodbye
+            else
+                puts "I don't understand."
+                sleep(2)
+                player_details(players)
+            end
+
     end
 end
