@@ -77,38 +77,49 @@ class CLI
             # binding.pry
         end
         puts "To view individual player statistics, please enter the number of the player of your choice:"
-        # puts "Would you like to see another roster? Please enter 'y' for yes and 'exit' to exit."
+        puts "Would you like to see another roster? Please enter 'y' for yes and 'exit' to exit."
         selection = user_input
         player_stat = sorted_roster.detect do |player|
                    player["jerseyNumber"] == selection
                 #    binding.pry
             end 
             player_selection(player_stat)
+            # binding.pry
         menu
     end
     
     def player_selection(player_stat)
         player_id = player_stat["person"]["id"]
+        puts ColorizedString["#{player_stat["person"]["fullName"]}"].colorize(:green)
         API.get_data_stats(player_id)
+        # binding.pry
         player_details
         
     end
 
     def player_details
         player_stats = Stats.all.each do |stats|
-            # binding.pry
         if stats.wins
-            puts "Wins: #{stats.wins}"
-            puts "Losses: #{stats.losses}"
-            puts "OT: #{stats.ot}"
-            puts "Shutouts: #{stats.shutouts}"
-            puts "GAA: #{stats.goalAgainstAverage}"
-            puts "SV%: #{stats.savePercentage}"
+            puts "~~~~~~~~~~~~~~~~~|"
+            puts ColorizedString["Wins: #{stats.wins}"].colorize(:light_blue)
+            puts "~~~~~~~~~~~~~~~~~|"
+            puts ColorizedString["Losses: #{stats.losses}"].colorize(:light_blue)
+            puts "~~~~~~~~~~~~~~~~~|"
+            puts ColorizedString["OT: #{stats.ot}"].colorize(:light_blue)
+            puts "~~~~~~~~~~~~~~~~~|"
+            puts ColorizedString["Shutouts: #{stats.shutouts}"].colorize(:light_blue)
+            puts "~~~~~~~~~~~~~~~~~|"
+            puts ColorizedString["GAA: #{stats.goalAgainstAverage.round(2)}"].colorize(:light_blue)
+            puts "~~~~~~~~~~~~~~~~~|"
+            puts ColorizedString["SV%: #{stats.savePercentage}"].colorize(:light_blue)
         else
             # binding.pry
-            puts "Goals: #{stats.goals}"
-            puts "Assists: #{stats.assists}"
-            puts "Total Points: #{stats.points}"
+            puts "~~~~~~~~~~~~~~~~~|"
+            puts ColorizedString["Goals: #{stats.goals}"].colorize(:light_blue)
+            puts "~~~~~~~~~~~~~~~~~|"
+            puts ColorizedString["Assists: #{stats.assists}"].colorize(:light_blue)
+            puts "~~~~~~~~~~~~~~~~~|"
+            puts ColorizedString["Total Points: #{stats.points}"].colorize(:light_blue)
             # binding.pry
         end
     end
