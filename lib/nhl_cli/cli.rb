@@ -13,6 +13,38 @@ class CLI
 
     def greeting(name)
         puts "Hello, #{name.upcase}! Would you like to see the roster of your favorite NHL team? Please type 'y' for yes or 'exit' to exit."
+        puts ColorizedString["
+        
+        y+-           `++.           `+y`        
+        os.-+:       `/s+`/+.       -os/-y        
+       -y/yo-.//:::/+o+sdd/`:/::::/o+oyh./+       
+      :s:sNdddo/::/+shmdo/ymy+/::/osdmyms.++      
+`-::/+::yNy//+syhhhys+::+o:-/osyyyyo/..:mh:-+/::-`
+o+.-:+hmh+/ymdyoo++ooydmNNNmyo++/:.`.:o-.oddo+:-+y
+`s/+mNo/+ymNNNNNNNNNNNNNNNNNNNmy:.-+dNNms:.:hNo+y.
+ `y+sNy:sNNNNNNNNNNNNNNNNNNNh+-./ymNNNNNNy`:Nh+h. 
+  -y+dm::NNNNNNNNNNNNNNNNds:.:sdh+oNNNNNN/`yN+s+  
+   h+yN+.dNNNNNNNNNNNNmy/.-+hhmh-`+NNNNNN..mh:h`  
+   y+sNo.yNNNNNNNNNNho-./ymm/.hN:`+NNdyNm`.Ns.y   
+   h+yN/.dNNNNNNNds:.:odhmNm.`hN:`/y/-:NN..my s.  
+  :y/dm.-NNNNNmh+--/hmy:.hmy.`hN:`.-/ydy/.`yN`-o  
+ `y/oNo.sNNNdo:.:sdhyNy``/-.``hN::sdho-./s.-my`s- 
+ s//mh./Nmy/.-ohNN+./Nd``-+y.`dNdds:.:odNNs.+N+/h`
+:o.hm-.y+--/ydysNN/`/Nd``hNm:smh+--+hmNNNNN/.ym:oo
+s.-Ny`..:sdNy-../m/`/Nd`.dNNho:.:ymNNNNNNNNh./N+/d
+h`:No`/hNNNNN-`-.--`/Nd/ydy/.-odNNNNNNNNNNNm-:No/d
+s-.Ny`oNNNNNN-`os.`.+Nmh+--/ymNNNNNNNNNNNNNd:+N+/h
+:o`yN--dNNNNN-`sNh+hds:.:sdNNNNNNNNNNNNNNNN+:hm-so
+ s-.dd--hNNNN-.sNmy/.-+hNNNNNNNNNNNNNNNNNmo/ym/+h`
+ `s-.hd/.+dNNshd+-./ymNNNNNNNNNNNNNNNNNmy++hm//y. 
+  `+/`+mh/-/ss:.-sdNNNNNNNNNNNNNNNNNmhs+ohmy:+s.  
+    -+-.+dds/-..+osydmmNNNNmmdhhysoo+oydms//o:    
+      -/+-/ohmdhyso+/::/oo+//+osyhhddho/:++:      
+        `:/+oooosyyhdmmdysdddyso+/:--/+/:`        
+            `.:/++osssoodh:`://////:-`            
+                     `/y+`++.                     
+                       `+o. 
+                       "].colorize(:blue)
         menu
     end
 
@@ -131,6 +163,9 @@ class CLI
             puts ColorizedString["Assists: #{stats.assists}"].colorize(:light_blue)
             puts "~~~~~~~~~~~~~~~~~|"
             puts ColorizedString["Total Points: #{stats.points}"].colorize(:light_blue)
+            puts "~~~~~~~~~~~~~~~~~|"
+            puts ColorizedString["Plus/Minus: #{stats.plusMinus}"].colorize(:light_blue)
+
             # binding.pry
         end
         end

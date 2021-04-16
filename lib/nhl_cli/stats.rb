@@ -1,6 +1,6 @@
 class Stats
 
-    attr_accessor :goals, :assists, :points, :wins, :losses, :ot, :shutouts, :goalAgainstAverage, :savePercentage
+    attr_accessor :goals, :assists, :points, :plusMinus, :wins, :losses, :ot, :shutouts, :goalAgainstAverage, :savePercentage
 
     @@all = []
 
